@@ -96,21 +96,22 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
 <script>
+    // Connect to the server
     var socket = io();
 
-    // When connected
+    // Listen for the "hello" event from the server
+    socket.on('hello', function(message) {
+      document.getElementById('message').innerText = message;
+    });
+
+    // Display connection status
     socket.on('connect', function() {
-      document.getElementById('status').innerText = 'Connected to server!';
       console.log('Connected to server');
     });
 
-    // When disconnected
     socket.on('disconnect', function() {
-      document.getElementById('status').innerText = 'Disconnected from server!';
-      console.log('Disconnected from server');
+      document.getElementById('message').innerText = 'Disconnected from server.';
     });
-
-    // You can add more socket events here, like 'chat', 'update', etc.
   </script>
 <script type="text/javascript" src="/js/game.js"></script>
 <script type="text/javascript" src="/js/client.js"></script>
