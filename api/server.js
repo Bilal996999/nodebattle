@@ -9,7 +9,7 @@ var BattleshipGame = require('./app/game.js');
 var GameStatus = require('./app/gameStatus.js');
 
 // var port = 8900;
-// var port = 8080;
+var port = process.env.PORT || 3000;
 
 var users = {};
 var gameIdCounter = 1;
@@ -17,7 +17,7 @@ var gameIdCounter = 1;
 app.use(express.static(__dirname + '/public'));
 
 http.listen(port, function(){
-  console.log('listening on *:');
+  console.log('listening on *:' + port);
 });
 
 io.on('connection', function(socket) {
