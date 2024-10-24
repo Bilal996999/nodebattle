@@ -9,7 +9,7 @@ var BattleshipGame = require('./app/game.js');
 var GameStatus = require('./app/gameStatus.js');
 
 // var port = 8900;
-var port = 3000;
+var port = 8080;
 
 var users = {};
 var gameIdCounter = 1;
