@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -10,8 +9,10 @@ const app = express();
 // Create HTTP server
 const server = http.createServer(app);
 
-// Integrate Socket.io
-const io = socketIo(server);
+// Setup Socket.io with fallback for long polling
+const io = socketIo(server, {
+  transports: ['websocket', 'polling'] // Support WebSockets and fallback to long polling
+});
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
