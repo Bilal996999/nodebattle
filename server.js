@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
+var http = require('https').Server(app);
 var io = require('socket.io')(http);
 var Entities = require('html-entities').AllHtmlEntities;
 var entities = new Entities();
